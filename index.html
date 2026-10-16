@@ -1,32 +1,119 @@
-<!-- AUTHENTICATION CARD -->
-<section id="auth-section" class="card">
-  <h2>1TT DISTRO — Artist Sign In / Register</h2>
-  
-  <form id="auth-form">
-    <!-- Extra profile metadata for new artist signups -->
-    <div id="signup-extra-fields" class="form-group hidden">
-      <label for="artist-name">Artist / Stage Name</label>
-      <input type="text" id="artist-name" placeholder="e.g. ZOWA ZAR" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1TT DISTRO — Digital Music Distribution & Publishing</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Supabase JS SDK v2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>1TT DISTRO</h1>
+      <p>Independent Music Distribution & Publishing Platform</p>
+    </header>
 
-      <label for="legal-name">Legal Name (For Publishing & Contracts)</label>
-      <input type="text" id="legal-name" placeholder="e.g. Abongile Gando" />
+    <!-- AUTH SECTION (Visible when logged out) -->
+    <div id="auth-section" class="auth-box">
+      <h2>Artist Portal Sign In</h2>
+      <div class="input-group">
+        <input type="email" id="email-input" placeholder="Artist Email" required />
+      </div>
+      <div class="input-group">
+        <input type="password" id="password-input" placeholder="Password" required />
+      </div>
+      <div class="btn-group">
+        <button id="signin-btn" class="primary-btn">Sign In</button>
+        <button id="signup-btn" class="secondary-btn">Sign Up</button>
+      </div>
+      <p id="auth-status" class="status-msg"></p>
     </div>
 
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input type="email" id="email" placeholder="artist@1ttrecords.com" required />
-    </div>
+    <!-- DASHBOARD SECTION (Visible when logged in) -->
+    <div id="dashboard-section" class="hidden">
+      <div class="user-nav">
+        <span id="user-email-display"></span>
+        <button id="signout-btn" class="secondary-btn">Sign Out</button>
+      </div>
 
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" placeholder="••••••••" required />
-    </div>
+      <!-- RELEASE SUBMISSION FORM -->
+      <section class="form-container">
+        <h2>Submit New Release</h2>
+        <form id="release-form">
+          <div class="input-group">
+            <label for="release-title">Release Title</label>
+            <input type="text" id="release-title" placeholder="e.g. Velvet Skyline" required />
+          </div>
 
-    <div class="button-group">
-      <button type="submit" id="login-btn">Log In</button>
-      <button type="button" id="toggle-signup-btn" class="btn-secondary">Register New Artist</button>
-    </div>
-  </form>
+          <div class="input-group">
+            <label for="release-type">Release Type</label>
+            <select id="release-type" required>
+              <option value="Single">Single</option>
+              <option value="EP">EP</option>
+              <option value="Album">Album</option>
+            </select>
+          </div>
 
-  <div id="auth-status" class="status-msg"></div>
-</section>
+          <div class="input-group">
+            <label for="upc-input">UPC Code (Optional)</label>
+            <input type="text" id="upc-input" placeholder="Leave blank to auto-generate" />
+          </div>
+
+          <div class="input-group">
+            <label for="isrc-input">ISRC Code (Optional)</label>
+            <input type="text" id="isrc-input" placeholder="Leave blank to auto-generate" />
+          </div>
+
+          <div class="input-group">
+            <label for="label-input">Record Label</label>
+            <input type="text" id="label-input" value="1TT RECORDS" required />
+          </div>
+
+          <div class="input-group">
+            <label for="composer-input">Legal Composer Name</label>
+            <input type="text" id="composer-input" value="Abongile Gando" required />
+          </div>
+
+          <div class="input-group">
+            <label for="p-line-input">℗ Line</label>
+            <input type="text" id="p-line-input" value="℗ 2026 1TT RECORDS" required />
+          </div>
+
+          <div class="input-group">
+            <label for="c-line-input">© Line</label>
+            <input type="text" id="c-line-input" value="© 2026 1TT PUBLISHING" required />
+          </div>
+
+          <div class="input-group">
+            <label for="cover-input">Cover Artwork (.jpg / .png):</label>
+            <input type="file" id="cover-input" accept="image/jpeg, image/png" required />
+          </div>
+
+          <div class="input-group">
+            <label for="audio-input">Master Audio File (.wav / .flac):</label>
+            <input type="file" id="audio-input" accept="audio/wav, audio/flac, audio/mpeg" required />
+          </div>
+
+          <button type="submit" id="submit-btn" class="primary-btn">Submit Release</button>
+        </form>
+        <p id="upload-status" class="status-msg"></p>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- CATALOG DISPLAY -->
+      <section class="catalog-section">
+        <h3>Your Music Catalog</h3>
+        <div id="catalog-list">
+          <p class="loading-text">Loading catalog...</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- Main JS Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
