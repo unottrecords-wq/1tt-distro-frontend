@@ -1,3 +1,4 @@
+// 1. INITIALIZE SUPABASE CLIENT
 const SUPABASE_URL = "https://hnlfqpscrgkxtwjtsqkj.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhubGZxcHNjcmdreHR3anRzcWtqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIwOTQ0NDUsImV4cCI6MjEwNzY3MDQ0NX0.dlZDpZww9YQ0nvi9YjNiNENcF9y66t-WVGL2cY8IwnE";
 
@@ -101,3 +102,4 @@ if (logoutBtn) {
     await supabase.auth.signOut();
     showAuth();
   });
+}
