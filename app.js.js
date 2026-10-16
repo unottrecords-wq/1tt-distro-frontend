@@ -1,28 +1,20 @@
-// REALTIME LISTENER FOR RELEASE STATUS UPDATES
-function subscribeToCatalogUpdates(artistId) {
-  const channel = supabase
-    .channel('public:releases')
-    .on(
-      'postgres_changes',
-      {
-        event: 'UPDATE',             // Listen specifically for status/metadata updates
-        schema: 'public',
-        table: 'releases',
-        filter: `artist_id=eq.${artistId}` // Only listen to changes for this specific artist
-      },
-      (payload) => {
-        console.log('Realtime update received:', payload);
-        
-        // Notify artist and refresh their live catalog list instantly
-        const updatedRelease = payload.new;
-        uploadStatus.textContent = `⚡ Update: "${updatedRelease.title}" status changed to [${updatedRelease.status}]!`;
-        
-        // Reload catalog UI automatically
-        const { data: { user } } = supabase.auth.getUser();
-        if (user) loadCatalog(user.id);
-      }
-    )
-    .subscribe();
+async function showDashboard(user) {
+  authSection.classList.add("hidden");
+  dashboardSection.classList.remove("hidden");
+  userEmailDisplay.textContent = `Signed in as: ${user.email}`;
 
-  return channel;
+  // 1. Fetch artist record ID linked to user
+  const { data: artist } = await supabase
+    .from("artists")
+    .select("id")
+    .eq("user_id", user.id)
+    .single();
+
+  if (artist) {
+    // 2. Load catalog list for UI
+    loadCatalog(user.id);
+
+    // 3. Trigger Realtime Listener on Sign-In
+    subscribeToCatalogUpdates(artist.id);
+  }
 }
