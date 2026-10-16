@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>1TT DISTRO — Artist Portal</title>
+  <!-- Supabase JS Client Library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>1TT DISTRO</h1>
+    <p>Independent Music & Video Distribution Platform</p>
+  </header>
+
+  <main>
+    <!-- AUTHENTICATION SECTION -->
+    <section id="auth-section" class="card">
+      <h2>Artist Portal Sign In / Register</h2>
+      <form id="auth-form">
+        <input type="email" id="email" placeholder="Artist Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <div class="button-group">
+          <button type="submit" id="login-btn">Log In</button>
+          <button type="button" id="signup-btn">Register</button>
+        </div>
+      </form>
+      <div id="auth-status" class="status-msg"></div>
+    </section>
+
+    <!-- DASHBOARD & RELEASE CREATION FORM (Hidden until logged in) -->
+    <section id="dashboard-section" class="card hidden">
+      <div class="user-header">
+        <h2>Artist Command Center</h2>
+        <button id="logout-btn" class="btn-secondary">Log Out</button>
+      </div>
+
+      <hr />
+
+      <h3>Create New Music Release</h3>
+      <form id="release-form">
+        <label for="title">Release Title</label>
+        <input type="text" id="title" placeholder="e.g. GOD MODE" required />
+
+        <label for="release_type">Release Type</label>
+        <select id="release_type">
+          <option value="Single">Single</option>
+          <option value="EP">EP</option>
+          <option value="Album">Album</option>
+        </select>
+
+        <label for="upc">UPC Barcode (Optional for Migration)</label>
+        <input type="text" id="upc" placeholder="e.g. 123456789012" />
+
+        <label for="cover_art">Cover Artwork (JPG/PNG - Max 10MB)</label>
+        <input type="file" id="cover_art" accept="image/jpeg, image/png" required />
+
+        <button type="submit" id="submit-release-btn">Submit Release to 1TT DISTRO</button>
+      </form>
+
+      <div id="upload-status" class="status-msg"></div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

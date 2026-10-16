@@ -1,0 +1,112 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #0d1117;
+  color: #c9d1d9;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  color: #58a6ff;
+  margin-bottom: 4px;
+}
+
+header p {
+  color: #8b949e;
+  font-size: 14px;
+  margin-top: 0;
+}
+
+.card {
+  background-color: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  padding: 24px;
+  width: 100%;
+  max-width: 480px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.hidden {
+  display: none !important;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #8b949e;
+}
+
+input, select, button {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #30363d;
+  background-color: #0d1117;
+  color: #fff;
+  font-size: 14px;
+}
+
+input:focus, select:focus {
+  border-color: #58a6ff;
+  outline: none;
+}
+
+button {
+  background-color: #238636;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #2ea043;
+}
+
+.btn-secondary {
+  background-color: #21262d;
+  border: 1px solid #30363d;
+}
+
+.btn-secondary:hover {
+  background-color: #30363d;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.status-msg {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #58a6ff;
+}
+
+.user-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #30363d;
+  margin: 16px 0;
+}
