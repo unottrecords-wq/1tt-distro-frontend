@@ -1,72 +1,47 @@
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: #0d1117;
-  color: #c9d1d9;
-  margin: 0;
-  padding: 20px;
+/* AUDIO PLAYER STYLING */
+.catalog-card {
+  background: #0d1117;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #30363d;
+  margin-bottom: 12px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 10px;
 }
 
-header h1 { color: #58a6ff; margin-bottom: 2px; }
-header p { color: #8b949e; margin-top: 0; font-size: 14px; }
-
-.card {
-  background-color: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 8px;
-  padding: 24px;
-  width: 100%;
-  max-width: 520px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-.hidden { display: none !important; }
-
-form { display: flex; flex-direction: column; gap: 12px; }
-.form-row { display: flex; gap: 10px; }
-.form-group { display: flex; flex-direction: column; flex: 1; gap: 4px; }
-
-label { font-size: 12px; font-weight: 600; color: #8b949e; }
-
-input, select, button {
-  padding: 10px 12px;
-  border-radius: 6px;
-  border: 1px solid #30363d;
-  background-color: #0d1117;
-  color: #fff;
-  font-size: 14px;
-}
-
-button {
-  background-color: #238636;
-  color: white;
-  border: none;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 8px;
-}
-button:hover { background-color: #2ea043; }
-
-.btn-secondary { background-color: #21262d; border: 1px solid #30363d; margin-top: 0; }
-
-.status-msg { margin-top: 10px; font-size: 13px; color: #58a6ff; }
-
-.user-header { display: flex; justify-content: space-between; align-items: center; }
-.user-header p { margin: 2px 0 0 0; font-size: 12px; color: #8b949e; }
-
-hr { border: none; border-top: 1px solid #30363d; margin: 16px 0; }
-
-.catalog-item {
+.catalog-header {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: #0d1117;
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #30363d;
-  margin-bottom: 8px;
 }
-.catalog-thumb { width: 48px; height: 48px; border-radius: 4px; object-fit: cover; }
-.badge { color: #58a6ff; font-weight: bold; }
+
+.catalog-thumb {
+  width: 54px;
+  height: 54px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.audio-player-container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #161b22;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #21262d;
+}
+
+.player-label {
+  font-size: 11px;
+  color: #8b949e;
+  font-weight: 600;
+}
+
+audio {
+  width: 100%;
+  height: 36px;
+  outline: none;
+  filter: invert(0.88) hue-rotate(180deg); /* Blends audio player dark theme */
+}
